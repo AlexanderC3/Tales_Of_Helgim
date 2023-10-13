@@ -52,18 +52,30 @@ func returned_direction(direction : Vector2):
 	var normalized_direction  = direction.normalized()
 	var default_return = "side"
 	
-	if normalized_direction.y > 0:
+	if normalized_direction.y > 0 && normalized_direction.x == 0:
 		return "down"
-	elif normalized_direction.y < 0:
+	elif normalized_direction.y < 0 && normalized_direction.x == 0:
 		return "up"
-	elif normalized_direction.x > 0:
+	elif normalized_direction.x > 0 && normalized_direction.y == 0:
 		#(right)
 		$AnimatedSprite2D.flip_h = false
 		return "side"
-	elif normalized_direction.x < 0:
+	elif normalized_direction.x < 0 && normalized_direction.y == 0:
 		#flip the animation for reusability (left)
 		$AnimatedSprite2D.flip_h = true
 		return "side"
+	elif normalized_direction.y > 0 && normalized_direction.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		return "down_right"
+	elif normalized_direction.y < 0 && normalized_direction.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		return "up_right"
+	elif normalized_direction.y > 0 && normalized_direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+		return "down_right"
+	elif normalized_direction.y < 0 && normalized_direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+		return "up_right"
 		
 	#default value is empty
 	return default_return
