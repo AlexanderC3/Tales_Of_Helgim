@@ -4,11 +4,12 @@ extends CharacterBody2D
 @onready var animation_sprite = $AnimatedSprite2D
 
 # Player states
-@export var speed = 75
+@export var speed = 100
 var is_attacking = false
 
 #direction and animation to be updated throughout game state
 var new_direction = Vector2(0,1) #only move one spaces
+
 var animation
 
 @onready var sprite = $AnimatedSprite2D
@@ -23,9 +24,9 @@ func get_input():
 		input_direction = input_direction.normalized()
 	# Sprinting
 	if Input.is_action_pressed("ui_sprint"):
-		speed = 130
+		speed = 150
 	elif Input.is_action_just_released("ui_sprint"):
-		speed = 75
+		speed = 100
 	velocity = input_direction * speed 
 	return input_direction
 
@@ -35,9 +36,10 @@ func _physics_process(delta):
 		move_and_slide()
 		player_animations(direction)
 	# If no input is pressed, idle
+	
 	if !Input.is_anything_pressed():
 		if is_attacking == false:
-			animation  = "idle_" + returned_direction(new_direction)	
+			animation  = "idle_" + returned_direction(direction)	
 				
 func _input(event):
 	#input event for our attacking, i.e. our shooting
@@ -52,7 +54,7 @@ func returned_direction(direction : Vector2):
 	#it normalizes the direction vector to make sure it has length 1 (1, or -1 up, down, left, and right) 
 	var normalized_direction  = direction.normalized()
 	var default_return = "side"
-	
+		
 	if normalized_direction.y > 0 && normalized_direction.x == 0:
 		return "down"
 	elif normalized_direction.y < 0 && normalized_direction.x == 0:
