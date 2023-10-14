@@ -4178,6 +4178,18 @@ texture = ExtResource("1_otxk3")
 43:40/0 = 0
 43:40/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 43:40/0/physics_layer_0/angular_velocity = 0.0
+33:29/0 = 0
+33:29/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+33:29/0/physics_layer_0/angular_velocity = 0.0
+36:34/0 = 0
+36:34/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+36:34/0/physics_layer_0/angular_velocity = 0.0
+36:29/0 = 0
+36:29/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+36:29/0/physics_layer_0/angular_velocity = 0.0
+33:34/0 = 0
+33:34/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+33:34/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw883"]
 resource_name = "Interior"

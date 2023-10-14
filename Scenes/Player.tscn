@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cmsf2m7wyddpf" path="res://Assets/Player/Player Angle 2 Sheet.png" id="6_vhxa5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvgin"]
+radius = 8.0
+height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cn3xq"]
 atlas = ExtResource("1_wnkji")
@@ -909,9 +911,11 @@ script = ExtResource("1_n6uv4")
 shape = SubResource("CapsuleShape2D_mvgin")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -13)
 sprite_frames = SubResource("SpriteFrames_fn3r7")
 animation = &"attack_up_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

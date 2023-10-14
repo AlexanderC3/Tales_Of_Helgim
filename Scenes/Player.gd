@@ -1,43 +1,44 @@
-
-### Player.gd
-
 extends CharacterBody2D
 
 # Node references
 @onready var animation_sprite = $AnimatedSprite2D
 
 # Player states
-@export var speed = 50
+@export var speed = 75
 var is_attacking = false
 
 #direction and animation to be updated throughout game state
 var new_direction = Vector2(0,1) #only move one spaces
 var animation
 
+@onready var sprite = $AnimatedSprite2D
+
 # --------------------------------- Movement & Animations -----------------------------------
-func _physics_process(delta):
-	# Get player input (left, right, up/down)
-	var direction: Vector2
-	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+
+func get_input():
+	var input_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+		
 	# Normalize movement
-	if abs(direction.x) == 1 and abs(direction.y) == 1:
-		direction = direction.normalized()
-	# Sprinting          
+	if input_direction.length() > 1:
+		input_direction = input_direction.normalized()
+	# Sprinting
 	if Input.is_action_pressed("ui_sprint"):
-		speed = 100
+		speed = 130
 	elif Input.is_action_just_released("ui_sprint"):
-		speed = 50  
-	# Apply movement if the player is not attacking
-	var movement = speed * direction * delta
+		speed = 75
+	velocity = input_direction * speed 
+	return input_direction
+
+func _physics_process(delta):
+	var direction = get_input()
 	if is_attacking == false:
-		move_and_collide(movement)
+		move_and_slide()
 		player_animations(direction)
 	# If no input is pressed, idle
 	if !Input.is_anything_pressed():
 		if is_attacking == false:
 			animation  = "idle_" + returned_direction(new_direction)	
-			
+				
 func _input(event):
 	#input event for our attacking, i.e. our shooting
 	if event.is_action_pressed("ui_attack"):
@@ -93,7 +94,8 @@ func player_animations(direction : Vector2):
 		#play idle animation, because we are still
 		animation  = "idle_" + returned_direction(new_direction)
 		animation_sprite.play(animation)
-
+		
 # Reset Animation states
 func _on_animated_sprite_2d_animation_finished():
 	is_attacking = false
+	
