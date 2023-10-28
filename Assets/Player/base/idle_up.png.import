@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xsoq0ocyeb06"
-path="res://.godot/imported/Unused Walk and Shoot.png-6444020558a929c0de17aec20f682954.ctex"
+uid="uid://bedn046sk1grs"
+path="res://.godot/imported/idle_up.png-7a4530d6f95efe700371c26da1830f52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Unused Walk and Shoot.png"
-dest_files=["res://.godot/imported/Unused Walk and Shoot.png-6444020558a929c0de17aec20f682954.ctex"]
+source_file="res://Assets/Player/base/idle_up.png"
+dest_files=["res://.godot/imported/idle_up.png-7a4530d6f95efe700371c26da1830f52.ctex"]
 
 [params]
 

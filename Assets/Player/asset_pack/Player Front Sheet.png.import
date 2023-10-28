@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmsf2m7wyddpf"
-path="res://.godot/imported/Player Angle 2 Sheet.png-bf7cda64f40df9a26c85f593455b6dd6.ctex"
+uid="uid://d0djok8y1fmuk"
+path="res://.godot/imported/Player Front Sheet.png-7eb61c7e95852a0f958919c3c1c6c9fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Player Angle 2 Sheet.png"
-dest_files=["res://.godot/imported/Player Angle 2 Sheet.png-bf7cda64f40df9a26c85f593455b6dd6.ctex"]
+source_file="res://Assets/Player/asset_pack/Player Front Sheet.png"
+dest_files=["res://.godot/imported/Player Front Sheet.png-7eb61c7e95852a0f958919c3c1c6c9fa.ctex"]
 
 [params]
 
