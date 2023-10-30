@@ -8,10 +8,17 @@ var direction : Vector2 = Vector2.ZERO
 # Player states
 @export var speed = 100
 
+# Composition Sprites
+@onready var HatSprite = $Node2D/hat
+const composite_sprites = preload("res://Scripts/CompositeSprites.gd")
+
+var curr_hair : int = 0
+
 # --------------------------------- Movement & Animations -----------------------------------
 
 func _ready():
 	animation_tree.active = true
+	HatSprite.texture = composite_sprites.hat_spritesheet[curr_hair]
 	
 func _process(delta):
 	update_animation_parameters()
@@ -49,3 +56,7 @@ func update_animation_parameters():
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
 		#animation_tree["parameters/Attack/blend_position"] = direction
+
+func _on_change_hat_pressed():
+	curr_hair = (curr_hair + 1) % composite_sprites.hat_spritesheet.size()
+	HatSprite.texture = composite_sprites.hat_spritesheet[curr_hair]
