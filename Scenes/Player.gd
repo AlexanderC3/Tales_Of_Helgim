@@ -21,7 +21,7 @@ func _ready():
 	HatSprite.texture = composite_sprites.hat_spritesheet[curr_hair]
 	
 func _process(delta):
-	update_animation_parameters()
+	update_animation_parameters(delta)
 
 func _physics_process(delta):
 	direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down").normalized()
@@ -32,29 +32,37 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("ui_sprint"):
 		speed = 100
 		
+	# Dashing
+	if Input.is_action_just_pressed("ui_dash"):
+		speed = 400
+		await get_tree().create_timer(0.5).timeout # waits for 1 second
+		speed = 100
+			
 	if direction:	
 		velocity = direction * speed 
 	else:
 		velocity = Vector2.ZERO
-
+		
 	move_and_slide()
 	
-func update_animation_parameters():		
+func update_animation_parameters(delta):			
 	if(velocity == Vector2.ZERO):
 		animation_tree["parameters/conditions/idle"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
 	else:
 		animation_tree["parameters/conditions/idle"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
-			
-	#if(Input.is_action_just_pressed("ui_attack")):
-		#animation_tree["parameters/conditions/attack"] = true
-	#else:
-		#animation_tree["parameters/conditions/attack"] = false
+					
+	if(Input.is_action_just_pressed("ui_dash")):
+		animation_tree["parameters/conditions/is_dashing"] = true
+		
+	else:
+		animation_tree["parameters/conditions/is_dashing"] = false
 	
 	if(direction != Vector2.ZERO):
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
+		animation_tree["parameters/dash/blend_position"] = direction
 		#animation_tree["parameters/Attack/blend_position"] = direction
 
 func _on_change_hat_pressed():
