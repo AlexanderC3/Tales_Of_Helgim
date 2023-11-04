@@ -34,7 +34,7 @@ func _physics_process(delta):
 		
 	# Dashing
 	if Input.is_action_just_pressed("ui_dash"):
-		speed = 400
+		speed = 500
 		await get_tree().create_timer(0.5).timeout # waits for 1 second
 		speed = 100
 			

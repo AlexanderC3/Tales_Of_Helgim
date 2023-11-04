@@ -1,8 +1,9 @@
-[gd_scene load_steps=85 format=3 uid="uid://bwmgqhiyhsip5"]
+[gd_scene load_steps=93 format=3 uid="uid://bwmgqhiyhsip5"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_n6uv4"]
 [ext_resource type="Texture2D" uid="uid://b2xf2tso1rywu" path="res://Assets/Player/cutted sprites/idle_down.png" id="2_bly7l"]
-[ext_resource type="Texture2D" uid="uid://bcjdjc2m8p1b7" path="res://Assets/Icons/hat_1.png" id="3_t51d1"]
+[ext_resource type="Texture2D" uid="uid://bs6vnprujoxyq" path="res://Assets/Player/base/dash_up.png" id="3_0mtib"]
+[ext_resource type="Texture2D" uid="uid://1tt6ks56nb20" path="res://Assets/Player/base/hat_1.png" id="3_syyij"]
 [ext_resource type="Texture2D" uid="uid://dc7280k3fvxla" path="res://Assets/Player/cutted sprites/attack_down.png" id="9_11is4"]
 [ext_resource type="Texture2D" uid="uid://dx44esyb7ff6m" path="res://Assets/Player/cutted sprites/damage.png" id="10_4ky1e"]
 [ext_resource type="Texture2D" uid="uid://dyuxgm8cf3hn5" path="res://Assets/Player/base/idle_down.png" id="10_xe1lp"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bv11h0fm43kye" path="res://Assets/Player/cutted sprites/attack_down_right.png" id="20_q4w13"]
 [ext_resource type="Texture2D" uid="uid://c4afc3n1gnij5" path="res://Assets/Player/base/dash_down.png" id="21_6qrw7"]
 [ext_resource type="Texture2D" uid="uid://cuhtc07343el4" path="res://Assets/Player/cutted sprites/idle_up_right.png" id="21_nrcqd"]
+[ext_resource type="Texture2D" uid="uid://bcrsuu01cbfqj" path="res://Assets/Player/base/dash_side.png" id="22_8k3dd"]
 [ext_resource type="Texture2D" uid="uid://bixwkohlafequ" path="res://Assets/Player/cutted sprites/walk_up_right.png" id="22_bofs1"]
 [ext_resource type="Texture2D" uid="uid://cmafvwwej03pw" path="res://Assets/Player/cutted sprites/attack_up_right.png" id="23_m8x6u"]
 
@@ -560,6 +562,83 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d6m4u"]
+resource_name = "dash_down"
+length = 0.5
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("21_6qrw7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/hat:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/hat:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -28)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/hat:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_r6m6t"]
@@ -1745,10 +1824,10 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_d6m4u"]
-resource_name = "dash_down"
+[sub_resource type="Animation" id="Animation_sfiio"]
+resource_name = "dash_side"
 length = 0.5
-step = 0.0833
+step = 0.083
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1759,7 +1838,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("21_6qrw7")]
+"values": [ExtResource("22_8k3dd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1776,38 +1855,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/hat:hframes")
+tracks/2/path = NodePath("Body:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [6]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/hat:position")
+tracks/3/path = NodePath("Body:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, -28)]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Body:frame")
+tracks/4/path = NodePath("Node2D/hat:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [6]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1816,10 +1895,212 @@ tracks/5/path = NodePath("Node2D/hat:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165),
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/hat:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/hat:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_n4l31"]
+resource_name = "dash_left"
+length = 0.5
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_8k3dd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/hat:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/hat:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/hat:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/hat:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_mhgo2"]
+resource_name = "dash_up"
+length = 0.5
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_0mtib")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/hat:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/hat:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/hat:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -28)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4n3r1"]
@@ -1835,6 +2116,9 @@ _data = {
 "attack_up_right": SubResource("Animation_6qjm2"),
 "damage": SubResource("Animation_dyj3h"),
 "dash_down": SubResource("Animation_d6m4u"),
+"dash_left": SubResource("Animation_n4l31"),
+"dash_side": SubResource("Animation_sfiio"),
+"dash_up": SubResource("Animation_mhgo2"),
 "death": SubResource("Animation_r6m6t"),
 "idle_down": SubResource("Animation_ssm7i"),
 "idle_down_left": SubResource("Animation_2ymey"),
@@ -1956,9 +2240,24 @@ blend_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2joc"]
 animation = &"dash_down"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rlf6u"]
+animation = &"dash_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fxq3g"]
+animation = &"dash_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntdw2"]
+animation = &"dash_side"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nogf8"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_e2joc")
 blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_rlf6u")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fxq3g")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ntdw2")
+blend_point_3/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
@@ -2021,7 +2320,7 @@ states/Walk/position = Vector2(617, 136)
 states/dash/node = SubResource("AnimationNodeBlendSpace2D_nogf8")
 states/dash/position = Vector2(491, 248)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_oi5yw"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_6s7yu"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_aay7w"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_1n7h1"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_s8a6d"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_3mqcn"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_ypa43"), "Idle", "dash", SubResource("AnimationNodeStateMachineTransition_cjdk5"), "dash", "Idle", SubResource("AnimationNodeStateMachineTransition_p0f33"), "dash", "Walk", SubResource("AnimationNodeStateMachineTransition_iu36w"), "Walk", "dash", SubResource("AnimationNodeStateMachineTransition_ukwd8")]
-graph_offset = Vector2(-56, 44)
+graph_offset = Vector2(-61, 170)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_n6uv4")
@@ -2035,7 +2334,7 @@ hframes = 6
 
 [node name="hat" type="Sprite2D" parent="Node2D"]
 position = Vector2(0, -53)
-texture = ExtResource("3_t51d1")
+texture = ExtResource("3_syyij")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
