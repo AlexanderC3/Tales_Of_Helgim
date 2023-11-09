@@ -8136,6 +8136,8 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ypl5s")]
 position = Vector2(145, 71)
+speed = 130
+dash_speed = 500
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fdtuq")
