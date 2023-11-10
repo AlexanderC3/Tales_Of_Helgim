@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # Movement Variables
-@export var speed = 130
-@export var dash_speed = 500
+@export var speed = 128
+@export var dash_speed = 380
 var direction : Vector2 = Vector2.ZERO
 var dash_vector : Vector2 = Vector2.ZERO
 
@@ -40,7 +40,9 @@ func _physics_process(delta):
 			pass
 	
 func move_state(delta):
-	direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down").normalized()
+	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	direction = direction.normalized()
 	
 	if direction != Vector2.ZERO:
 		dash_vector = direction
